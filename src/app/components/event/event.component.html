@@ -1,0 +1,18 @@
+<div class="event-header-wrapper">
+  <div *ngIf="event.images; else imgNotFound" class="image-block"
+    [ngStyle]="{ 'backgroundImage':'url(' + event.images[0].sizes.small.url + ')' }"></div>
+
+  <ng-template #imgNotFound>
+    <div class="image-block not-found-image"></div>
+  </ng-template>
+</div>
+
+<div class="event-content-wrapper white-color">
+  <h4>{{ event.title }}</h4>
+  <small>{{ event.start_datetime }}</small>
+
+  <div class="button-wrapper">
+    <button *ngIf="event.description_short" mat-raised-button color="accent" (click)="openDialog()">Description</button>
+    <button *ngIf="!event.description_short" mat-raised-button disabled class="button-disabled">Description not Found</button>
+  </div>
+</div>

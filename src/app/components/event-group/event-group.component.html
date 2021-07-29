@@ -1,0 +1,19 @@
+<div *ngIf="filteredEventsObj; else loading">
+  <mat-grid-list *ngIf="filteredEventsObj.length > 0" #grid [cols]="cols" rowHeight="300px" gutterSize="20px">
+    <mat-grid-tile *ngFor="let event of filteredEventsObj | paginate: { itemsPerPage: 8, currentPage: p }">
+      <app-event [event]="event"></app-event>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div *ngIf="filteredEventsObj.length == 0" class="no-event-found">
+    <span>No events found for the selected date</span>
+  </div>
+
+  <div *ngIf="filteredEventsObj.length > 0" class="pagination-wrapper">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

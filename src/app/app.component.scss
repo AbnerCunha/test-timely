@@ -1,0 +1,25 @@
+h1 {
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.datepicker-wrapper {
+  padding: 20px 0 10px;
+}
+
+mat-form-field {
+  padding-right: 15px;
+}
+
+mat-icon {
+  position: absolute;
+  float: right;
+  right: -5px;
+  font-size: 20px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.54);
+}

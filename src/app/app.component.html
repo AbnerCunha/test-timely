@@ -1,0 +1,21 @@
+<div *ngIf="calendarInfo; else loading">
+  <h1>{{ calendarInfo.title }}</h1>
+  <p>{{ calendarInfo.product }}</p>
+
+  <div class="datepicker-wrapper">
+    <mat-form-field>
+      <input readonly [(ngModel)]="startDate" matInput [matDatepicker]="datepickerField" (dateChange)="changingDate($event.target.value)" placeholder="Choose a date">
+      <mat-icon matDatepickerToggleIcon (click)="clearDate($event)">clear</mat-icon>
+      <mat-datepicker-toggle matSuffix [for]="datepickerField"></mat-datepicker-toggle>
+      <mat-datepicker #datepickerField></mat-datepicker>
+    </mat-form-field>
+  </div>
+  
+  <app-event-group [dateFormated]="dateFormated" [calendarId]="calendarInfo.id"></app-event-group>
+</div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>
+
+<router-outlet></router-outlet>
